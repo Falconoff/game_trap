@@ -2,6 +2,13 @@
   --bg-color: #333;
   --text-color: #ccc;
   --border-color: #aaa;
+  --hover-color: #fff;
+  --pulsar-timing-function: cubic-bezier(
+    0.51,
+    1.74,
+    0.39,
+    -0.8
+  );
 }
 
 h1 {
@@ -17,7 +24,7 @@ body {
 
   font-family: Arial, sans-serif;
   color: var(--text-color);
-  /* font-size: 20px; */
+  /* font-size: 18px; */
 
   background-color: var(--bg-color);
 }
@@ -39,11 +46,24 @@ header {
 
   border: 2px solid var(--border-color);
   border-radius: 8px;
-  background-color: transparent;
+  /* background-color: transparent; */
+  background-color: var(--bg-color);
 
   text-decoration: none;
   color: var(--text-color);
   font-size: 16px;
+
+  cursor: pointer;
+  transition: color 300ms linear, border-color 300ms linear,
+    opacity 300ms linear;
+  /* visibility: hidden; */
+  /* transition: opacity 1000ms var(--pulsar-timing-function); */
+  opacity: 1;
+}
+
+.button:hover {
+  color: var(--hover-color);
+  border-color: var(--hover-color);
 }
 
 .container {
@@ -54,9 +74,14 @@ header {
 }
 
 .instructions {
-  outline: 1px dotted blue;
+  display: block;
   margin-top: 0;
   margin-bottom: 20px;
+  height: 50px;
+
+  font-size: 20px;
+
+  outline: 1px dotted blue;
 }
 
 .field {
@@ -84,10 +109,11 @@ header {
   font-size: 36px;
   opacity: 1;
 
-  transition: opacity 500ms linear;
+  transition: opacity 1000ms var(--pulsar-timing-function);
 }
 
 .hidden {
   /* visibility: hidden; */
   opacity: 0;
+  cursor: default;
 }
