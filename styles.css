@@ -9,6 +9,9 @@
     0.39,
     -0.8
   );
+  --mobile: 380px;
+  --tablet: 768px;
+  --desktop: 1440px;
 }
 
 body {
@@ -28,8 +31,9 @@ body {
 header,
 footer {
   /* min-height: 50px; */
-  padding: 10px;
-  background-color: rgb(47, 31, 61);
+  padding: 20px 0px;
+  /* background-color: rgb(47, 31, 61); */
+  background-color: #30303f;
 }
 
 header {
@@ -37,6 +41,7 @@ header {
 }
 
 .button {
+  /* position: absolute; */
   display: inline-block;
   padding: 10px 25px;
 
@@ -62,22 +67,88 @@ header {
   border-color: var(--hover-color);
 }
 
+@media screen and (max-width: 375px) {
+  .container {
+    width: 100vw;
+  }
+
+  .instructions {
+    height: 120px;
+
+    font-size: 16px;
+  }
+
+  .field {
+    width: 242px;
+    height: 323px;
+  }
+}
+
+@media screen and (min-width: 376px) {
+  .container {
+    width: 375px;
+  }
+
+  .instructions {
+    height: 120px;
+
+    font-size: 18px;
+  }
+
+  .field {
+    width: 242px;
+    height: 323px;
+  }
+}
+@media screen and (min-width: 769px) {
+  .container {
+    width: 600px;
+  }
+
+  .instructions {
+    height: 120px;
+
+    font-size: 20px;
+  }
+
+  .field {
+    width: 302px;
+    height: 403px;
+  }
+}
+
 .container {
-  width: 600px;
+  /* width: 600px; */
   margin-inline: auto;
+  padding-inline: 10px;
 
   /* outline: 1px solid red; */
+}
+
+.main-container {
+  position: relative;
+}
+
+.next-btn {
+  position: absolute;
+  right: 10px;
+  bottom: 0;
 }
 
 .instructions {
   display: block;
   margin-top: 0;
   margin-bottom: 20px;
-  height: 50px;
+  /* height: 80px; */
 
-  font-size: 20px;
+  /* font-size: 20px; */
 
-  /* outline: 1px dotted blue; */
+  opacity: 1;
+  transition: opacity 1000ms linear;
+}
+
+.instructions-hiding {
+  opacity: 0;
 }
 
 .field {
@@ -85,8 +156,8 @@ header {
   grid-template: repeat(4, 1fr) / repeat(3, 1fr);
   gap: 1px;
 
-  width: 302px;
-  height: 403px;
+  /* width: 302px;
+  height: 403px; */
   margin-inline: auto;
 }
 
@@ -105,7 +176,15 @@ header {
   font-size: 36px;
   opacity: 1;
 
-  transition: opacity 1000ms var(--pulsar-timing-function);
+  cursor: pointer;
+
+  transition: color 300ms linear, border-color 300ms linear,
+    opacity 1000ms var(--pulsar-timing-function);
+}
+
+.cell:hover {
+  color: var(--hover-color);
+  border-color: var(--hover-color);
 }
 
 .hidden {
@@ -113,3 +192,4 @@ header {
   opacity: 0;
   cursor: default;
 }
+/* transition: */

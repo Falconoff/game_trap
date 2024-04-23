@@ -1,26 +1,29 @@
 const messageTexts = [
   [
-    "ПРАВИЛА ИГРЫ: По диагонали ходить нельзя! Ходить можно только вертикально и горизонтально. Играем!... Нажмите Далее",
+    "ПРАВИЛА ИГРЫ: 1 ход - это переход с одной клетки на другую (смежную). По диагонали ходить нельзя! Ходить можно только вертикально и горизонтально. Ходим взглядом, нажимать по клеткам не нужно. Играем!... Нажмите кнопку Далее",
 
-    "Вы сейчас стоите на квадрате 0. Сделайте 5 ходов в любых направлениях, кроме как по диагонали. Запомните на каком квадрате остановились! Нажмите Далее",
+    "Вы сейчас стоите на квадрате 0. Сделайте 5 ходов в любых направлениях, кроме как по диагонали, и запомните на каком квадрате остановились. Затем нажмите Далее",
   ],
 
   [
-    "Стартовый квадрат 0 нам уже не пригодится. Убираем его...",
-    "С того места, где остановились, сделайте ещё 4 хода. Не забудьте - по диагонали ходить нельзя! Запомните свой квадрат",
+    "Стартовый квадрат 0 нам уже не пригодится. Я убираю его",
+    "С того квадрата, где стоите, сделайте ещё 4 хода. Не забудьте - по диагонали ходить нельзя! Запомните свой квадрат и нажмите Далее",
   ],
 
   [
-    "Я знаю, что Вас тут нет.",
-    "Сделайте ещё 3 хода. По диагонали ходить нельзя! Запомните на каком квадрате остановились",
+    "Я знаю где Вас нет) Убираю ненужные квадраты",
+    "Сделайте ещё 3 хода. По диагонали ходить нельзя! Запомните на каком квадрате остановились и нажмите Далее",
   ],
 
   [
-    "Я знаю, что Вас тут нет. Я слежу за глазами ))",
+    "Я снова уберу квадрат, где Вас нет",
     "Сделайте ещё 1 ход.",
   ],
 
-  ["Я знаю, что Вас и тут нет", "Сделайте ещё 3 хода."],
+  [
+    "Я знаю, что Вас и тут нет. Я слежу за глазами ))",
+    "Сделайте ещё 3 хода.",
+  ],
 
   ["Я знаю где Вы! )))"],
 ];
@@ -42,6 +45,8 @@ const refs = {
 
 let step = 1;
 
+refs.message.innerHTML = messageTexts[0][0];
+
 // only for the first click
 refs.nextBtn.addEventListener(
   "click",
@@ -54,11 +59,15 @@ refs.nextBtn.addEventListener(
 // console.log(refs.cells);
 // console.log(refs.cells[9]);
 
-refs.message.innerHTML = messageTexts[0][0];
-
 function onNextBtnClickFirstTime() {
   console.log("click 1st");
-  refs.message.innerHTML = messageTexts[0][1];
+
+  // refs.message.classList.add("instructions-hiding");
+  // window.setTimeout(() => {
+  //   refs.message.innerHTML = messageTexts[0][1];
+  //   refs.message.classList.remove("instructions-hiding");
+  // }, 1000);
+  showSmoothInstructions(messageTexts[0][1]);
 
   // let timeoutID = window.setTimeout(func, 3000);
   refs.nextBtn.addEventListener("click", onNextBtnClick);
@@ -69,7 +78,8 @@ function onNextBtnClick() {
 
   onBtnDisabled(refs.nextBtn);
 
-  refs.message.innerHTML = messageTexts[step][0]; // mess: del cell
+  // refs.message.innerHTML = messageTexts[step][0]; // mess: del cell
+  showSmoothInstructions(messageTexts[step][0]);
 
   // hide cell
   window.setTimeout(() => {
@@ -82,7 +92,8 @@ function onNextBtnClick() {
   }
 
   window.setTimeout(() => {
-    refs.message.innerHTML = messageTexts[step][1]; // mess: make steps
+    // refs.message.innerHTML = messageTexts[step][1]; // mess: make steps
+    showSmoothInstructions(messageTexts[step][1]);
   }, 4000);
 
   window.setTimeout(() => {
@@ -90,9 +101,9 @@ function onNextBtnClick() {
     step += 1;
   }, 6000);
 
-  console.log("step=", step);
+  // console.log("step=", step);
 
-  console.log("step=", step);
+  // console.log("step=", step);
 }
 
 function onBtnDisabled(btn) {
@@ -109,4 +120,12 @@ function hideCells(arr) {
   arr.forEach(index =>
     refs.cells[index].classList.add("hidden"),
   );
+}
+
+function showSmoothInstructions(text) {
+  refs.message.classList.add("instructions-hiding");
+  window.setTimeout(() => {
+    refs.message.innerHTML = text;
+    refs.message.classList.remove("instructions-hiding");
+  }, 1000);
 }
