@@ -3,6 +3,7 @@
   --text-color: #ccc;
   --border-color: #aaa;
   --hover-color: #fff;
+  --bg-hover-color: #2a2a2a;
   --pulsar-timing-function: cubic-bezier(
     0.51,
     1.74,
@@ -31,13 +32,50 @@ body {
 header,
 footer {
   /* min-height: 50px; */
-  padding: 20px 0px;
+  /* padding: 20px 0px; */
+  padding-block: 20px;
   /* background-color: rgb(47, 31, 61); */
   background-color: #30303f;
 }
 
 header {
   margin-bottom: 20px;
+}
+
+.header-container {
+  display: flex;
+  /* align-items: ; */
+  justify-content: space-between;
+}
+
+.lang-wrap {
+  display: flex;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.lang-btn {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-size: 16px;
+  border: none;
+  /* border-radius: 8px; */
+  padding-inline: 15px;
+  cursor: pointer;
+  transition: color 300ms linear, border-color 300ms linear,
+    background-color 300ms linear, opacity 300ms linear;
+}
+.lang-btn:not(:last-child) {
+  border-right: 1px solid var(--border-color);
+}
+
+.lang-btn:hover,
+.lang-btn:focus {
+  color: var(--hover-color);
+  /* border-color: var(--hover-color); */
+  background-color: var(--bg-hover-color);
+  outline: none;
 }
 
 .button {
@@ -56,15 +94,18 @@ header {
 
   cursor: pointer;
   transition: color 300ms linear, border-color 300ms linear,
-    opacity 300ms linear;
+    background-color 300ms linear, opacity 300ms linear;
   /* visibility: hidden; */
   /* transition: opacity 1000ms var(--pulsar-timing-function); */
   opacity: 1;
 }
 
-.button:hover {
+.button:hover,
+.button:focus {
   color: var(--hover-color);
   border-color: var(--hover-color);
+  background-color: var(--bg-hover-color);
+  outline: none;
 }
 
 @media screen and (max-width: 375px) {
