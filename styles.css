@@ -71,10 +71,12 @@ header {
 }
 
 .lang-btn:hover,
-.lang-btn:focus {
+.lang-btn:focus,
+.lang-btn.active {
   color: var(--hover-color);
   /* border-color: var(--hover-color); */
   background-color: var(--bg-hover-color);
+  /* background-color: red; */
   outline: none;
 }
 
