@@ -143,14 +143,19 @@ header {
     height: 323px;
   }
 }
+
 @media screen and (min-width: 769px) {
   .container {
     width: 600px;
   }
 
   .instructions {
-    height: 120px;
+    font-size: 20px;
+  }
+}
 
+@media screen and (min-width: 1440px) {
+  .instructions {
     font-size: 20px;
   }
 
@@ -161,11 +166,8 @@ header {
 }
 
 .container {
-  /* width: 600px; */
   margin-inline: auto;
   padding-inline: 10px;
-
-  /* outline: 1px solid red; */
 }
 
 .main-container {
